@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webinar o Instagramie</title>
+    <style>
+        /* Stylizacja strony */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            background: linear-gradient(45deg, #F77737, #C13584, #405DE6);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        nav {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .menu-icon {
+            width: 30px;
+            height: 30px;
+        }
+
+        .menu {
+            display: none;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            width: 200px;
+            border-radius: 10px;
+        }
+
+        .menu a {
+            display: block;
+            padding: 15px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            background-color: #f7f7f7;
+        }
+
+        .content {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .content h2 {
+            color: #C13584;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        .form-container {
+            margin-top: 40px;
+        }
+
+        input[type="email"] {
+            padding: 15px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #C13584;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #E1306C;
+        }
+
+        .message {
+            color: green;
+            font-size: 1.2em;
+            display: none;
+        }
+
+        /* Ukryte sekcje na temat kursu */
+        .hidden-section {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        /* Animacje */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .animated-button {
+            animation: float 2s infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Webinar o Instagramie</h1>
+        <nav>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Hamburger_icon.svg" alt="menu" class="menu-icon" id="menu-icon">
+        </nav>
+        <div class="menu" id="menu">
+            <a href="#" id="about-link">O mnie</a>
+            <a href="#" id="why-link">Dlaczego warto?</a>
+            <a href="#" id="learn-link">Czego się nauczysz?</a>
+        </div>
+    </header>
+
+    <section class="content">
+        <h2>Dołącz do darmowego webinaru o Instagramie!</h2>
+        <p>Dowiedz się, jak rozwijać swój profil, zdobywać obserwatorów i zarabiać na Instagramie.</p>
+        <p class="animated-button">Wpisz swój e-mail, aby otrzymać dostęp do webinaru:</p>
+
+        <div class="form-container">
+            <form id="email-form">
+                <input type="email" id="email" name="email" placeholder="Twój adres e-mail" required>
+                <button type="submit">Zapisz się</button>
+            </form>
+            <div class="message" id="message">Dziękujemy za zapisanie się!</div>
+        </div>
+    </section>
+
+    <!-- Sekcje informacji, które pojawiają się po kliknięciu w menu -->
+    <div class="hidden-section" id="about-section">
+        <h3>O mnie</h3>
+        <p>Jestem ekspertem w dziedzinie Instagrama z ponad 5-letnim doświadczeniem. Prowadziłem profile, które mają setki tysięcy obserwatorów i pomogłem wielu firmom rozwijać swoją obecność w mediach społecznościowych.</p>
+    </div>
+
+    <div class="hidden-section" id="why-section">
+        <h3>Dlaczego warto?</h3>
+        <p>Instagram to potężne narzędzie do budowania marki osobistej i promowania swojego biznesu. Na moim kursie dowiesz się, jak optymalnie wykorzystać Instagram, by przyciągnąć nowych klientów i rozwijać swoją działalność online.</p>
+    </div>
+
+    <div class="hidden-section" id="learn-section">
+        <h3>Czego się nauczysz?</h3>
+        <ul>
+            <li>Jak tworzyć atrakcyjne treści</li>
+            <li>Jak zdobywać nowych obserwatorów</li>
+            <li>Jak zarabiać na Instagramie</li>
+            <li>Jak korzystać z narzędzi analitycznych</li>
+        </ul>
+    </div>
+
+    <script>
+        // Toggle menu
+        document.getElementById('menu-icon').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Funkcje do pokazywania ukrytych sekcji
+        function hideAllSections() {
+            document.getElementById('about-section').style.display = 'none';
+            document.getElementById('why-section').style.display = 'none';
+            document.getElementById('learn-section').style.display = 'none';
+        }
+
+        document.getElementById('about-link').addEventListener('click', function() {
+            hideAllSections();
+            document.getElementById('about-section').style.display = 'block';
+        });
+
+        document.getElementById('why-link').addEventListener('click', function() {
+            hideAllSections();
+            document.getElementById('why-section').style.display = 'block';
+        });
+
+        document.getElementById('learn-link').addEventListener('click', function() {
+            hideAllSections();
+            document.getElementById('learn-section').style.display = 'block';
+        });
+
+        // Obsługa formularza zapisu
+        document.getElementById('email-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+
+            const response = await fetch('/save-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            });
+
+            if (response.ok) {
+                document.getElementById('message').style.display = 'block';
+                document.getElementById('email').value = '';  // Wyczyść formularz po sukcesie
+            }
+        });
+    </script>
+
+</body>
+</html>
